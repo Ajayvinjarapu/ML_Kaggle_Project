@@ -61,3 +61,13 @@ if run_model:
 
     st.subheader("Classification Report")
     st.text(classification_report(y_test, pred))
+
+    st.subheader("Heart Disease Prediction Result")
+
+    sample_input = pd.DataFrame([X_test.iloc[0]], columns=X.columns)
+    prediction = grid.predict(sample_input)
+
+    if prediction[0] == 1:
+        st.error("The model predicts that the individual may have Heart Disease.")
+    else:
+        st.success("The model predicts that the individual does NOT have Heart Disease.")
